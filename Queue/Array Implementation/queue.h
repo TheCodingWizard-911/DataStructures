@@ -3,11 +3,11 @@
 
 template <typename T>
 
-class QUEUE
+class Queue
 {
 private:
   T *array;
-  int top;
+  int front, rear, count;
 
 public:
   Queue();
