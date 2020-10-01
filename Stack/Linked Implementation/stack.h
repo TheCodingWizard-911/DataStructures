@@ -6,8 +6,12 @@ template <typename T>
 class Stack
 {
 private:
-  T *array;
-  int top;
+  typedef struct node
+  {
+    T data;
+    struct node *previous, *next;
+  } node;
+  node *top;
 
 public:
   Stack();
