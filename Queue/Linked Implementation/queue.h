@@ -6,8 +6,12 @@ template <typename T>
 class Queue
 {
 private:
-  T *array;
-  int front, rear, count;
+  typedef struct node
+  {
+    T data;
+    struct node *next;
+  } node;
+  node *front, *rear;
 
 public:
   Queue();

@@ -38,7 +38,7 @@ void Stack<T>::push(T data)
   newnode->next = nullptr;
   newnode->data = data;
 
-  if (this->top == nullptr)
+  if (this->isStackEmpty())
   {
     this->top = newnode;
   }

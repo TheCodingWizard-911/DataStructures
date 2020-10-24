@@ -17,24 +17,23 @@ template <typename T>
 
 void Queue<T>::initQueue()
 {
-  this->array = (T *)calloc(sizeof(T), MAX);
-  this->front = 0;
-  this->rear = this->front - 1;
-  this->count = 0;
+  this->front = nullptr;
+  this->rear = nullptr;
 }
 
 template <typename T>
 
 bool Queue<T>::isQueueEmpty()
 {
-  return this->count == 0;
+  return this->front == nullptr;
 }
 
 template <typename T>
 
 bool Queue<T>::isQueueFull()
 {
-  return this->count == (MAX - 1);
+  node *newnode = (node *)malloc(sizeof(node));
+  return newnode ? false : true;
 }
 
 template <typename T>
@@ -42,10 +41,22 @@ template <typename T>
 void Queue<T>::enqueue(T data)
 {
 
-  this->rear = (this->rear + 1) % MAX;
-  this->array[this->rear] = data;
+  node *newnode = (node *)malloc(sizeof(node));
+  newnode->data = data;
+  newnode->next = nullptr;
 
-  this->count++;
+  if (this->isQueueEmpty())
+  {
+
+    this->front = newnode;
+    this->rear = newnode;
+  }
+
+  else
+  {
+    this->rear->next = newnode;
+    this->rear = this->rear->next;
+  }
 }
 
 template <typename T>
@@ -53,10 +64,12 @@ template <typename T>
 T Queue<T>::dequeue()
 {
 
-  T data = this->array[this->front];
-  this->front = (this->front + 1) % MAX;
+  T data = this->front->data;
 
-  this->count--;
+  node *temp = this->front;
+  this->front = this->front->next;
+
+  free(temp);
 
   return data;
 }
