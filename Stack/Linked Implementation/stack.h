@@ -18,6 +18,7 @@ public:
   void initStack();
   bool isStackEmpty();
   bool isStackFull();
+  node *createNewnode(T data);
   void push(T data);
   T pop();
   ~Stack();

@@ -30,13 +30,20 @@ bool Stack<T>::isStackFull()
 }
 
 template <typename T>
-void Stack<T>::push(T data)
+Stack<T>::node *Stack<T>::createNewnode(T data)
 {
-
   node *newnode = (node *)malloc(sizeof(node));
   newnode->previous = nullptr;
   newnode->next = nullptr;
   newnode->data = data;
+
+  return newnode;
+}
+
+template <typename T>
+void Stack<T>::push(T data)
+{
+  node *newnode = createNewnode(data);
 
   if (this->isStackEmpty())
   {

@@ -12,3 +12,6 @@ main.o : main.cpp
 	g++ -c main.cpp
 
 main.cpp: queue.cpp
+
+clean:
+	rm *.o program
